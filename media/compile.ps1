@@ -9,6 +9,9 @@
 
 if($args.Length -eq 1){
 	$file = $args[0]
+	if($file[0] -eq "." -and $file[1] -eq "\"){
+		$file = $file.Substring(2, $file.Length - 2)	
+	}
 	if($file.Substring($file.Length - 5, 5) -eq ".java"){
     		$fileName = $file.Substring(0, $file.Length - 5);
 	}else{
