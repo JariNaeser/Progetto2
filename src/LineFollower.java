@@ -7,11 +7,11 @@ public class LineFollower
 {
 	public LightSensor light;
 	
-	public char motor1;
+	public char motorLeft = 'A';
 	
-	public char motor2;
+	public char motorRight = 'B';
 	
-	public LineFollower(int sensor){
+	public LineFollower(int sensor, char left, char right){
 		if(sensor == 1){			
 			LightSensor light = new LightSensor(SensorPort.S1);
 		}else if(sensor == 2){
@@ -21,12 +21,16 @@ public class LineFollower
 		}else if(sensor == 4){
 			LightSensor light = new LightSensor(SensorPort.S4);
 		}
+		motorLeft = left;
+		motorRight = right;
 	}
 	
 	public void main(String[] args)
 	{
-		LineFollower ln = new LineFollower(1,);
-		ln.lineFollower(true, 100, 360);		
+		LineFollower ln = new LineFollower(1,'A','B');
+		ln.lineFollower(true, 100, 360);
+		Motor.A.forward();
+		Motor.B.forward();
 	}
 	
 	public void setMotorSpeed(char name, int speed){
@@ -42,11 +46,11 @@ public class LineFollower
 	public void lineFollower(boolean flag, int minSpeed, int maxSpeed){
 		while(flag){
 			if(light.getLightValue()>45){
-				setMotorSpeed('A', maxSpeed);
-				setMotorSpeed('B', minSpeed);
+				setMotorSpeed(motorLeft, maxSpeed);
+				setMotorSpeed(motorRight, minSpeed);
 			}else{
-				setMotorSpeed('B', maxSpeed);
-				setMotorSpeed('A', minSpeed);
+				setMotorSpeed(motorRight, maxSpeed);
+				setMotorSpeed(motorLeft, minSpeed);
 			}
 		}
 	}
