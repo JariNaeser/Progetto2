@@ -17,7 +17,7 @@ public class NXT
 			LCD.drawString("Program 1", 2, 2);
 			Thread.sleep(1000);
 			LCD.clear();
-			batteryDisplay(g);
+			displayBattery(g);
 			while (!touch.isPressed()) {
 				// try again
 			}
@@ -42,7 +42,7 @@ public class NXT
 		}
 	}
 	
-	public static void batteryDisplay(Graphics g){
+	public static void displayBattery(Graphics g){
 		g.drawLine(4,2,5,2);
 		g.drawRect(3,3,3,8);
 		g.fillRect(3,8-(int)(Battery.getVoltage())+3,4,(int)(Battery.getVoltage()));
