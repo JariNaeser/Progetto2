@@ -7,6 +7,10 @@ public class LineFollower
 {
 	public LightSensor light;
 	
+	public char motor1;
+	
+	public char motor2;
+	
 	public LineFollower(int sensor){
 		if(sensor == 1){			
 			LightSensor light = new LightSensor(SensorPort.S1);
@@ -21,8 +25,8 @@ public class LineFollower
 	
 	public void main(String[] args)
 	{
-		LineFollower ln = new LineFollower(1);
-		lineFollower(true, 100, 360);		
+		LineFollower ln = new LineFollower(1,);
+		ln.lineFollower(true, 100, 360);		
 	}
 	
 	public void setMotorSpeed(char name, int speed){
@@ -37,7 +41,7 @@ public class LineFollower
 	
 	public void lineFollower(boolean flag, int minSpeed, int maxSpeed){
 		while(flag){
-			if(light.getLightValue()>50){
+			if(light.getLightValue()>45){
 				setMotorSpeed('A', maxSpeed);
 				setMotorSpeed('B', minSpeed);
 			}else{
