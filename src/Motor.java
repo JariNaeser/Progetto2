@@ -1,23 +1,45 @@
-/*
-	Mettere toLower a tutte le stringhe che definiscono le opzioni del motore. Es: Forward -> forward
-	Coerenza con l'ide, guardare che con certe opzioni certe opzioni siano disattivate
-*/
+import lejos.nxt.*;
+
 public class Motor{
 
-	private char port = 'A';
-	private String direction = "Forward";
-	private String action = "Constant";	
+	private static char port = 'A';
+	private String direction = "forward";
+	private String action = "constant";	
 	private int power = 75;
 	private boolean control = false;
 	private double durationValue = 0.0;
-	private String durationType = "Unlimited";
+	private String durationType = "unlimited";
 
-	public Motor(char port, String direction, String action, int power, boolean control, double durationValue, String durationType){
-		//Not all paremeters are needed in the constructor, remove if not needed.
+	public Motor(char port, String direction, int power){
+		setPort(port);
+		setDirection(direction);
+		setPower(power);
+	}
+
+	public void start(){
+		if(durationType == "unlimited"){
+			setDurationValue(0.0);
+			setAction("constant");
+			Motor.port.forward();
+		}else if(durationType == "degrees"){
+			Motor.port.rotate((int)durationValue);
+		}else if(durationType == "rotations"){
+			Motor.port.rotate((int)durationValue*360);
+		}else if(durationType == "Seconds"){
+			setAction("constant");
+			long initTime = System.currentTimeMillis();
+			while((System.currentTimeMillis() - initTime)/1000 < durationValue){
+				Motor.port.forward();
+			}
+			Motor.port.stop();
+		}
+	}
+
+	public void stop(){
+		Motor.port.stop();
 	}
 
 	// Getter methods
-
 	public char getPort(){
 		return this.port;
 	}
@@ -47,7 +69,6 @@ public class Motor{
 	}
 
 	// Setter methods
-
 	public void setPort(char port){
 		port = Character.toUpperCase(port);
 		if(port == 'A' || port == 'B' || port == 'C'){
@@ -57,7 +78,10 @@ public class Motor{
 
 	public void setDirection(String direction){
 		direction = direction.toLowerCase();
-		if(direction == "forward" || direction == "backward" || direction == "stop"){
+		if(direction == "forward" || direction == "backward"){
+			if(this.direction != direction){
+				Motor.port.reverseDirection();
+			}
 			this.direction = direction;
 		}
 	}
