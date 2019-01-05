@@ -1,8 +1,10 @@
 import lejos.nxt.*;
 
-public class WaitTouchSensor extends WaitDigitalSensor{
+public class WaitTouchSensor extends WaitSensor{
 	
 	private TouchSensor touch;
+	
+	private byte action = 0;
 	
 	public WaitTouchSensor(TouchSensor touch){
 		this.touch = touch;
