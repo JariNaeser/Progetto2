@@ -1,28 +1,28 @@
+import lejos.nxt.*;
+
 public class Navigation{
 
 	private Motor leftMotor;
 	private Motor rightMotor;
-	//Turning for what?
-	private byte power = 0;
-	private byte steering = 0;
+	private int power = 0;
+	private int steering = 0;
 
 	public Nagivation(char leftMotor, char rightMotor){
 		leftMotor = new Motor(leftMotor);
 		rightMotor = new Motor(rightMotor);
 	}
 
-	public byte getPower(){
+	public int getPower(){
 		return this.power;
 	}
 
 	public void setPower(byte power){
-		//No need for controls, it's a byte
-		if(power >= 0){
+		if(power >= 0 && power <= 100){
 			this.power = power;
 		}
 	}
 
-	public byte getSteering(){
+	public int getSteering(){
 		return this.steering;
 	}
 
@@ -36,17 +36,9 @@ public class Navigation{
 
 	}
 
-	// public void left(){
-
-	// }
-
 	public void left(byte howMuch){
 
 	}
-
-	// public void right(){
-
-	// }
 
 	public void right(byte howMuch){
 
