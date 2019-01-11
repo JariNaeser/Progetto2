@@ -1,6 +1,6 @@
 import lejos.nxt.*;
 
-public class WaitTouchSensor extends WaitSensor{
+public class WaitTouchSensor extends Wait{
 	
 	private TouchSensor touch;
 	

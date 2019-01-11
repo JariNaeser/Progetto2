@@ -1,6 +1,6 @@
 import lejos.nxt.*;
 
-public class WaitColorSensor extends WaitSensor{
+public class WaitColorSensor extends Wait{
 	
 	private ColorLightSensor cs;
 	
