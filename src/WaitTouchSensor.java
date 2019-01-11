@@ -35,10 +35,10 @@ public class WaitTouchSensor extends WaitSensor{
 				finished = true;
 			}
 		}
+		return finished;
 	}
 	
 	public void beginWait(){
-		startTime = System.currentTimeMillis();
 		wait();
 	}
 }
