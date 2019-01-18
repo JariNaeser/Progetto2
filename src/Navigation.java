@@ -11,8 +11,6 @@ public class Navigation{
 	public Navigation(char leftMotor, char rightMotor){
 		leftMotor = new Motor(leftMotor);
 		rightMotor = new Motor(rightMotor);
-		leftMotor.setPower(getPower());
-		rightMotor.setPower(getPower());
 	}
 
 	public int getPower(){
