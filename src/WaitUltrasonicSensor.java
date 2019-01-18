@@ -1,6 +1,6 @@
 import lejos.nxt.*;
 
-public class WaitUltrasonicSensor extends WaitAnalogSensor{
+public class WaitUltrasonicSensor{
 	
 	private UltrasonicSensor sonic;
 	
@@ -8,13 +8,13 @@ public class WaitUltrasonicSensor extends WaitAnalogSensor{
 		this.sonic = sonic;
 	}
 	
-	public void wait(){
-		while(isFinished()){
+	public void wait(boolean bigger, int value){
+		while(isFinished(bigger, value)){
 			
 		}
 	}
 	
-	public boolean isFinished(){
+	public boolean isFinished(boolean bigger, int value){
 		boolean finished = false;
 		if(bigger){
 			if(sonic.getDistance() > value){
@@ -26,9 +26,5 @@ public class WaitUltrasonicSensor extends WaitAnalogSensor{
 			}
 		}
 		return finished;
-	}
-	
-	public void beginWait(){
-		wait();
 	}
 }

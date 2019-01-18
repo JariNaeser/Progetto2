@@ -10,7 +10,7 @@ public class WaitTouchSensor extends Wait{
 		this.touch = touch;
 	}
 	
-	public void wait(){
+	public void myWait(){
 		while(isFinished()){
 			
 		}
@@ -39,6 +39,6 @@ public class WaitTouchSensor extends Wait{
 	}
 	
 	public void beginWait(){
-		wait();
+		myWait();
 	}
 }

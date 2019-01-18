@@ -1,6 +1,6 @@
 import lejos.nxt.*;
 
-public class WaitSoundSensor extends WaitAnalogSensor{
+public class WaitSoundSensor{
 	
 	private SoundSensor sound;
 	
@@ -8,13 +8,13 @@ public class WaitSoundSensor extends WaitAnalogSensor{
 		this.sound = sound;
 	}
 	
-	public void wait(){
-		while(isFinished()){
+	public void myWait(boolean bigger, int value){
+		while(isFinished(bigger, value)){
 			
 		}
 	}
 	
-	public boolean isFinished(){
+	public boolean isFinished(boolean bigger, int value){
 		boolean finished = false;
 		if(bigger){
 			if(sound.readValue() > value){
@@ -26,9 +26,5 @@ public class WaitSoundSensor extends WaitAnalogSensor{
 			}
 		}
 		return finished;
-	}
-	
-	public void beginWait(){
-		wait();
 	}
 }

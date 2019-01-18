@@ -1,6 +1,6 @@
 import lejos.nxt.*;
 
-public class WaitLightSensor extends WaitAnalogSensor{
+public class WaitLightSensor{
 	
 	private LightSensor light;
 	
@@ -8,13 +8,13 @@ public class WaitLightSensor extends WaitAnalogSensor{
 		this.light = light;
 	}
 	
-	public void wait(){
-		while(isFinished()){
+	public void myWait(boolean bigger, int value){
+		while(isFinished(bigger, value)){
 			
 		}
 	}
 	
-	public boolean isFinished(){
+	public boolean isFinished(boolean bigger, int value){
 		boolean finished = false;
 		if(bigger){
 			if(light.getLightValue() > value){
@@ -26,9 +26,5 @@ public class WaitLightSensor extends WaitAnalogSensor{
 			}
 		}
 		return finished;
-	}
-	
-	public void beginWait(){
-		wait();
 	}
 }

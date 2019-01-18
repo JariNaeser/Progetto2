@@ -17,7 +17,7 @@ public class WaitTime extends Wait{
 		this.time = time;
 	}
 	
-	public void wait(){
+	public void myWait(){
 		while(isFinished()){
 			
 		}
@@ -33,6 +33,6 @@ public class WaitTime extends Wait{
 	
 	public void beginWait(){
 		startTime = System.currentTimeMillis();
-		wait();
+		myWait();
 	}
 }

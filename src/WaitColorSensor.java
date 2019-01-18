@@ -1,38 +1,30 @@
 import lejos.nxt.*;
+import lejos.robotics.*;
 
-public class WaitColorSensor extends Wait{
+public class WaitColorSensor{
 	
-	private ColorLightSensor cs;
+	private ColorSensor cs;
 	
-	private byte red = 0;
-	
-	private byte blue = 0;
-	
-	private byte green = 0;
-	
-	public WaitColorSensor(ColorLightSensor cs){
+	public WaitColorSensor(ColorSensor cs){
 		this.cs = cs;
 	}
 	
-	public void wait(){
-		while(isFinished()){
+	public void wait(int red, int green, int blue){
+		while(isFinished(red, green, blue)){
 			
 		}
 	}
 	
-	public boolean isFinished(){
+	public boolean isFinished(int red, int blue, int green){
 		boolean finished = false;
-		if(cs.getRed() > red-10 && cs.getRed() < red+10){
-			if(cs.getGreen() > green-10 && cs.getGreen() < green+10){
-				if(cs.getBlue() > blue-10 && cs.getBlue() < blue+10){
+		Color c = cs.getColor();
+		if(c.getRed() > red-10 && c.getRed() < red+10){
+			if(c.getGreen() > green-10 && c.getGreen() < green+10){
+				if(c.getBlue() > blue-10 && c.getBlue() < blue+10){
 					finished = true;
 				}
 			}	
 		}
 		return finished;
-	}
-	
-	public void beginWait(){
-		wait();
 	}
 }
