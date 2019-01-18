@@ -1,16 +1,16 @@
 import lejos.nxt.*;
 
-public class WaitMotor extends Wait{
+public class WaitMotor{
 
 	private int value = 0;
 	private boolean rotations = false;
-	private Motor motor;
+	private MyMotor motor;
 
-	public Motor getMotor(){
+	public MyMotor getMotor(){
 		return this.motor;
 	}
 
-	public void setMotor(Motor motor){
+	public void setMotor(MyMotor motor){
 		this.motor = motor;
 	}
 
@@ -32,11 +32,11 @@ public class WaitMotor extends Wait{
 		this.rotations = rotations;
 	}
 
-	public WaitMotor(Motor motor){
+	public WaitMotor(MyMotor motor){
 		setMotor(motor);
 	}
 
-	public void wait(){
+	public void myWait(){
 		while(isFinished()){
 			
 		}
@@ -52,7 +52,7 @@ public class WaitMotor extends Wait{
 	}
 
 	public void beginWait(){
-		wait();
+		myWait();
 	}
 
 	public static void main(String[] args){
