@@ -2,15 +2,15 @@ import lejos.nxt.*;
 
 public class Navigation{
 
-	private Motor leftMotor;
-	private Motor rightMotor;
+	private MyMotor leftMotor;
+	private MyMotor rightMotor;
 	private int power = 0;
 	private int steering = 0;
 	private char direction = 'F';
 
 	public Navigation(char leftMotor, char rightMotor){
-		leftMotor = new Motor(leftMotor);
-		rightMotor = new Motor(rightMotor);
+		this.leftMotor = new MyMotor(leftMotor);
+		this.rightMotor = new MyMotor(rightMotor);
 	}
 
 	public int getPower(){
