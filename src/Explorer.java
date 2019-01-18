@@ -3,37 +3,69 @@ import lejos.nxt.*;
 public class Explorer{
 	private final char MOTOR_LEFT_PORT = 'A';
 	private final char MOTOR_RIGHT_PORT = 'B';
+	private final int DISTANCE = 30;
 	private Navigation navigator;
-	private UltrasonicSensor us = new UltrasonicSensor(SensorPort.S3);
-	private WaitUltrasonicSensor wus = new WaitUltrasonicSensor(us);
-	private TouchSensor tsl = new TouchSensor(SensorPort.S2);
-	private TouchSensor tsr= new TouchSensor(SensorPort.S4);
-	private WaitTouchSensor wtsl = new WaitTouchSensor(tsl);
-	private WaitTouchSensor wtsr = new WaitTouchSensor(tsr);
-	private LightSensor ls = new LightSensor(SensorPort.S1);
-	private WaitLightSensor wls = new WaitLightSensor(ls);
+	private UltrasonicSensor ultrasonicSensor = new UltrasonicSensor(SensorPort.S3);
+	private WaitUltrasonicSensor waitUltrasonicSensor = new WaitUltrasonicSensor(ultrasonicSensor);
+	private TouchSensor touchSensorLeft = new TouchSensor(SensorPort.S2);
+	private TouchSensor touchSensorRight = new TouchSensor(SensorPort.S4);
+	private WaitTouchSensor waitTouchSensorLeft = new WaitTouchSensor(touchSensorLeft);
+	private WaitTouchSensor waitTouchSensorRight = new WaitTouchSensor(touchSensorRight);
+	private LightSensor lightSensor = new LightSensor(SensorPort.S1);
+	private WaitLightSensor waitLightSensor = new WaitLightSensor(lightSensor);
 
 	public Explorer(){
 		navigator = new Navigation(MOTOR_LEFT_PORT, MOTOR_RIGHT_PORT);
 		navigator.setPower(80);
-		
 	}
 
 	public static void main(String[] args){
-		while(true){
+		try{
 			navigator.move();
-			if(wus.isFinished(false, 30)){
-				//Inserire cosa deve fare se è più vicino di 30 cm
+			while(true){
+				if(waitUltrasonicSensor.isFinished(false, DISTANCE)){
+					//Inserire cosa deve fare se è più vicino di 30 cm
+					navigator.stop();
+					navigator.setDirection('B');
+					navigator.move();
+					Thread.sleep(1500);
+					navigator.stop();
+					navigator.setDirection('F');
+					navigator.right(20);
+					Thread.sleep(2000);
+					navigator.setPower(80);
+				}
+				if(waitTouchSensorLeft.isFinished(0)){
+					//gira a sinistra indietro
+					navigator.stop();
+					navigator.setDirection('B');
+					navigator.move();
+					Thread.sleep(1500);
+					navigator.stop();
+					navigator.setDirection('F');
+					navigator.left(20);
+					Thread.sleep(2000);
+					navigator.setPower(80);
+				}
+				if(waitTouchSensorRight.isFinished(0)){
+					//gira a destra indietro
+					navigator.stop();
+					navigator.setDirection('B');
+					navigator.move();
+					Thread.sleep(1500);
+					navigator.stop();
+					navigator.setDirection('F');
+					navigator.right(20);
+					Thread.sleep(2000);
+					navigator.setPower(80);
+				}
+				if(waitLightSensor.isFinished(false, 50)){
+					//Si ferma 
+					navigator.stop();
+				}
 			}
-			if(wtsl.isFinished(0)){
-				//gira a sinistra indietro
-			}
-			if(wtsr.isFinished(0)){
-				//gira a destra indietro
-			}
-			if(wls.isFinished(false, 50)){
-				//Si ferma 
-			}
+		}catch(InterruptedException ie){
+			//Interrupted
 		}
 	}
 }
