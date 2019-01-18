@@ -1,6 +1,6 @@
 import lejos.nxt.*;
 
-public class WaitTouchSensor extends Wait{
+public class WaitTouchSensor{
 	
 	private TouchSensor touch;
 	
@@ -10,13 +10,13 @@ public class WaitTouchSensor extends Wait{
 		this.touch = touch;
 	}
 	
-	public void myWait(){
-		while(isFinished()){
+	public void myWait(int action){
+		while(isFinished(action)){
 			
 		}
 	}
 	
-	public boolean isFinished(){
+	public boolean isFinished(int action){
 		boolean finished = false;
 		if(action == 0){
 			finished = touch.isPressed();
@@ -36,9 +36,5 @@ public class WaitTouchSensor extends Wait{
 			}
 		}
 		return finished;
-	}
-	
-	public void beginWait(){
-		myWait();
 	}
 }
