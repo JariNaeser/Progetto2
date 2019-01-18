@@ -1,6 +1,6 @@
 import lejos.nxt.*;
 
-public class WaitMotor extends Wait{
+public class WaitMotor{
 
 	private int value = 0;
 	private boolean rotations = false;
@@ -36,7 +36,7 @@ public class WaitMotor extends Wait{
 		setMotor(motor);
 	}
 
-	public void wait(){
+	public void myWait(){
 		while(isFinished()){
 			
 		}
