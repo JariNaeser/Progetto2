@@ -7,10 +7,13 @@ public class Explorer{
 
 	public Explorer(){
 		navigator = new Navigation(MOTOR_LEFT_PORT, MOTOR_RIGHT_PORT);
+		navigator.setPower(80);
 		
 	}
 
 	public static void main(String[] args){
-
+		while(true){
+			navigator.move();
+		}
 	}
 }
