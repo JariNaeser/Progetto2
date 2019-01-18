@@ -5,7 +5,7 @@ Questo progetto ha lo scopo di semplificare l'uso dei robot LEGO NXT attraverso 
 
 ```
 @author Jari Näser
-@Paolo Gübeli
+@author Paolo Gübeli
 
 @version 14.11.2018 - 01.02.2019
-```
+``
