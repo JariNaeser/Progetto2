@@ -1,18 +1,18 @@
 import lejos.nxt.*;
 
 public class Explorer{
-	private final char MOTOR_LEFT_PORT = 'A';
-	private final char MOTOR_RIGHT_PORT = 'B';
-	private final int DISTANCE = 30;
-	private Navigation navigator;
-	private UltrasonicSensor ultrasonicSensor = new UltrasonicSensor(SensorPort.S3);
-	private WaitUltrasonicSensor waitUltrasonicSensor = new WaitUltrasonicSensor(ultrasonicSensor);
-	private TouchSensor touchSensorLeft = new TouchSensor(SensorPort.S2);
-	private TouchSensor touchSensorRight = new TouchSensor(SensorPort.S4);
-	private WaitTouchSensor waitTouchSensorLeft = new WaitTouchSensor(touchSensorLeft);
-	private WaitTouchSensor waitTouchSensorRight = new WaitTouchSensor(touchSensorRight);
-	private LightSensor lightSensor = new LightSensor(SensorPort.S1);
-	private WaitLightSensor waitLightSensor = new WaitLightSensor(lightSensor);
+	private static final char MOTOR_LEFT_PORT = 'A';
+	private static final char MOTOR_RIGHT_PORT = 'B';
+	private static final int DISTANCE = 30;
+	private static Navigation navigator;
+	private static UltrasonicSensor ultrasonicSensor = new UltrasonicSensor(SensorPort.S3);
+	private static WaitUltrasonicSensor waitUltrasonicSensor = new WaitUltrasonicSensor(ultrasonicSensor);
+	private static TouchSensor touchSensorLeft = new TouchSensor(SensorPort.S2);
+	private static TouchSensor touchSensorRight = new TouchSensor(SensorPort.S4);
+	private static WaitTouchSensor waitTouchSensorLeft = new WaitTouchSensor(touchSensorLeft);
+	private static WaitTouchSensor waitTouchSensorRight = new WaitTouchSensor(touchSensorRight);
+	private static LightSensor lightSensor = new LightSensor(SensorPort.S1);
+	private static WaitLightSensor waitLightSensor = new WaitLightSensor(lightSensor);
 
 	public Explorer(){
 		navigator = new Navigation(MOTOR_LEFT_PORT, MOTOR_RIGHT_PORT);

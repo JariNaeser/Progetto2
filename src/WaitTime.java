@@ -1,5 +1,5 @@
 
-public class WaitTime extends Wait{
+public class WaitTime{
 	
 	private long time;
 	
@@ -29,10 +29,5 @@ public class WaitTime extends Wait{
 		}else{
 			return false;
 		}
-	}
-	
-	public void beginWait(){
-		startTime = System.currentTimeMillis();
-		myWait();
 	}
 }

@@ -38,7 +38,8 @@ public class Navigation{
 	}
 
 	public void setDirection(char direction){
-		direction = Character.toUpperCase(direction);
+		String s = direction + "";
+		direction = s.toUpperCase().charAt(0);
 		if(direction == 'F' || direction == 'B'){
 			this.direction = direction;
 		}

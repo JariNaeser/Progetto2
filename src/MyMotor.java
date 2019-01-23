@@ -1,5 +1,4 @@
 import lejos.nxt.*;
-import static java.lang.Character.*;
 
 public class MyMotor{
 
@@ -10,7 +9,8 @@ public class MyMotor{
 	}
 
 	public void setPort(char port){
-		port = Character.toUpperCase(port);
+		String s = port + "";
+		port = s.toUpperCase().charAt(0);
 		if(port == 'A' || port == 'B' || port == 'C'){
 			this.port = port;
 		}
