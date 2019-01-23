@@ -1,29 +1,24 @@
 
 public class WaitTime{
 	
-	private long time;
-	
 	private long startTime;
 	
-	public void setTime(long time){
-		
+	public WaitTime(){
+	
 	}
 	
-	public long getTime(){
-		return time;
+	public void setStartTime(){
+		startTime = System.currentTimeMillis();
 	}
 	
-	public WaitTime(long time){
-		this.time = time;
-	}
-	
-	public void myWait(){
-		while(isFinished()){
+	public void myWait(long time){
+		startTime = System.currentTimeMillis();
+		while(isFinished(time)){
 			
 		}
 	}
 	
-	public boolean isFinished(){
+	public boolean isFinished(long time){
 		if(startTime + time >= System.currentTimeMillis()){
 			return true;
 		}else{
