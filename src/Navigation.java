@@ -2,15 +2,39 @@ import lejos.nxt.*;
 
 public class Navigation{
 
-	private MyMotor leftMotor;
-	private MyMotor rightMotor;
+	private char leftMotor = 'A';
+	private char rightMotor = 'B';
 	private int power = 0;
 	private int steering = 0;
 	private char direction = 'F';
 
 	public Navigation(char leftMotor, char rightMotor){
-		this.leftMotor = new MyMotor(leftMotor);
-		this.rightMotor = new MyMotor(rightMotor);
+		setMotorLeftPort(leftMotor);
+		setMotorRightPort(rightMotor);
+	}
+
+	public char getLeftMotorPort(){
+		return this.leftMotor;
+	}
+
+	public char getRightMotorPort(){
+		return this.rightMotor;
+	}
+
+	public void setMotorLeftPort(char port){
+		String mp = port + "";
+		port = mp.toUpperCase().charAt(0);
+		if(port == 'A' || port == 'B' || port == 'C'){
+			leftMotor = port;
+		}
+	}
+
+	public void setMotorRightPort(char port){
+		String mp = port + "";
+		port = mp.toUpperCase().charAt(0);
+		if(port == 'A' || port == 'B' || port == 'C'){
+			leftMotor = port;
+		}
 	}
 
 	public int getPower(){
@@ -20,6 +44,8 @@ public class Navigation{
 	public void setPower(int power){
 		if(power >= 0 && power <= 100){
 			this.power = power;
+			Motor.getLeftMotorPort().setPower(this.getPower());
+			Motor.getRightMotorPort().setPower(this.getPower());
 		}
 	}
 
@@ -47,27 +73,27 @@ public class Navigation{
 
 	public void move(){
 		if(getDirection() == 'F'){
-			rightMotor.forward();
-			leftMotor.forward();
+			Motor.getLeftMotorPort().forward();
+			Motor.getRightMotorPort().forward();
 		}else{
-			rightMotor.backward();
-			leftMotor.backward();
+			Motor.getLeftMotorPort().backward();
+			Motor.getRightMotorPort().backward();
 		}
 	}
 
 	public void left(int howMuch){
-		leftMotor.setPower(getPower() - getSteering()/2);
-		rightMotor.setPower(getPower() + getSteering()/2);
+		Motor.getLeftMotorPort().setPower(this.getPower() - this.getSteering()/2);
+		Motor.getRightMotorPort().setPower(this.getPower() + this.getSteering()/2);
 	}
 
 	public void right(int howMuch){
-		leftMotor.setPower(getPower() + getSteering()/2);
-		rightMotor.setPower(getPower() - getSteering()/2);
+		Motor.getLeftMotorPort().setPower(this.getPower() + this.getSteering()/2);
+		Motor.getRightMotorPort().setPower(this.getPower() - this.getSteering()/2);
 	}
 
 	public void stop(){
-		leftMotor.stop();
-		rightMotor.stop();
+		Motor.getLeftMotorPort().stop();
+		Motor.getRightMotorPort().stop();
 	}
 
 	public static void main(String[] args){
