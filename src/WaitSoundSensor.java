@@ -15,16 +15,15 @@ public class WaitSoundSensor{
 	}
 	
 	public boolean isFinished(boolean bigger, int value){
-		boolean finished = false;
 		if(bigger){
 			if(sound.readValue() > value){
-				finished = true;
+				return true;
 			}
 		}else{
 			if(sound.readValue() < value){
-				finished = true;
+				return true;
 			}
 		}
-		return finished;
+		return false;
 	}
 }
