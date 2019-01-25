@@ -44,8 +44,22 @@ public class Navigation{
 	public void setPower(int power){
 		if(power >= 0 && power <= 100){
 			this.power = power;
-			Motor.getLeftMotorPort().setPower(this.getPower());
-			Motor.getRightMotorPort().setPower(this.getPower());
+			switch(getLeftMotorPort()){
+				case 'A':
+					Motor.A.setPower(this.getPower());
+				case 'B':
+					Motor.B.setPower(this.getPower());
+				case 'C':
+					Motor.C.setPower(this.getPower());
+			}
+			switch(getRightMotorPort()){
+				case 'A':
+					Motor.A.setPower(this.getPower());
+				case 'B':
+					Motor.B.setPower(this.getPower());
+				case 'C':
+					Motor.C.setPower(this.getPower());
+			}
 		}
 	}
 
@@ -73,27 +87,97 @@ public class Navigation{
 
 	public void move(){
 		if(getDirection() == 'F'){
-			Motor.getLeftMotorPort().forward();
-			Motor.getRightMotorPort().forward();
+			switch(getLeftMotorPort()){
+				case 'A':
+					Motor.A.forward();
+				case 'B':
+					Motor.B.forward();
+				case 'C':
+					Motor.C.forward();
+			}
+			switch(getRightMotorPort()){
+				case 'A':
+					Motor.A.forward();
+				case 'B':
+					Motor.B.forward();
+				case 'C':
+					Motor.C.forward();
+			}
 		}else{
-			Motor.getLeftMotorPort().backward();
-			Motor.getRightMotorPort().backward();
+			switch(getLeftMotorPort()){
+				case 'A':
+					Motor.A.backward();
+				case 'B':
+					Motor.B.backward();
+				case 'C':
+					Motor.C.backward();
+			}
+			switch(getRightMotorPort()){
+				case 'A':
+					Motor.A.backward();
+				case 'B':
+					Motor.B.backward();
+				case 'C':
+					Motor.C.backward();
+			}
 		}
 	}
 
 	public void left(int howMuch){
-		Motor.getLeftMotorPort().setPower(this.getPower() - this.getSteering()/2);
-		Motor.getRightMotorPort().setPower(this.getPower() + this.getSteering()/2);
+		switch(getLeftMotorPort()){
+			case 'A':
+				Motor.A.setPower(this.getPower() - this.getSteering()/2);
+			case 'B':
+				Motor.B.setPower(this.getPower() - this.getSteering()/2);
+			case 'C':
+				Motor.C.setPower(this.getPower() - this.getSteering()/2);
+		}
+		switch(getRightMotorPort()){
+			case 'A':
+				Motor.A.setPower(this.getPower() + this.getSteering()/2);
+			case 'B':
+				Motor.B.setPower(this.getPower() + this.getSteering()/2);
+			case 'C':
+				Motor.C.setPower(this.getPower() + this.getSteering()/2);
+		}
 	}
 
 	public void right(int howMuch){
-		Motor.getLeftMotorPort().setPower(this.getPower() + this.getSteering()/2);
-		Motor.getRightMotorPort().setPower(this.getPower() - this.getSteering()/2);
+		switch(getLeftMotorPort()){
+			case 'A':
+				Motor.A.setPower(this.getPower() + this.getSteering()/2);
+			case 'B':
+				Motor.B.setPower(this.getPower() + this.getSteering()/2);
+			case 'C':
+				Motor.C.setPower(this.getPower() + this.getSteering()/2);
+		}
+		switch(getRightMotorPort()){
+			case 'A':
+				Motor.A.setPower(this.getPower() - this.getSteering()/2);
+			case 'B':
+				Motor.B.setPower(this.getPower() - this.getSteering()/2);
+			case 'C':
+		 		Motor.C.setPower(this.getPower() - this.getSteering()/2);
+		}
 	}
 
 	public void stop(){
-		Motor.getLeftMotorPort().stop();
-		Motor.getRightMotorPort().stop();
+		switch(getLeftMotorPort()){
+			case 'A':
+				Motor.A.stop();
+			case 'B':
+				Motor.B.stop();
+			case 'C':
+				Motor.C.stop();
+		}
+		switch(getRightMotorPort()){
+			case 'A':
+				Motor.A.stop();
+			case 'B':
+				Motor.B.stop();
+			case 'C':
+		 		Motor.C.stop();
+		}
 	}
 
 	public static void main(String[] args){
