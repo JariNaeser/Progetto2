@@ -15,16 +15,15 @@ public class WaitUltrasonicSensor{
 	}
 	
 	public boolean isFinished(boolean bigger, int value){
-		boolean finished = false;
 		if(bigger){
 			if(sonic.getDistance() > value){
-				finished = true;
+				return true;
 			}
 		}else{
 			if(sonic.getDistance() < value){
-				finished = true;
+				return true;
 			}
 		}
-		return finished;
+		return false;
 	}
 }
