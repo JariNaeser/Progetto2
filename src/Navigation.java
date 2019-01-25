@@ -179,7 +179,7 @@ public class Navigation{
 		 		Motor.C.stop();
 		}
 	}
-
+	
 	public static void main(String[] args){
 
 	}
