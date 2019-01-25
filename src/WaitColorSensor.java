@@ -16,15 +16,14 @@ public class WaitColorSensor{
 	}
 	
 	public boolean isFinished(int red, int blue, int green){
-		boolean finished = false;
 		Color c = cs.getColor();
 		if(c.getRed() > red-10 && c.getRed() < red+10){
 			if(c.getGreen() > green-10 && c.getGreen() < green+10){
 				if(c.getBlue() > blue-10 && c.getBlue() < blue+10){
-					finished = true;
+					return true;
 				}
 			}	
 		}
-		return finished;
+		return false;
 	}
 }
