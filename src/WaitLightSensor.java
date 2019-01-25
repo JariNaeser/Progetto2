@@ -15,16 +15,15 @@ public class WaitLightSensor{
 	}
 	
 	public boolean isFinished(boolean bigger, int value){
-		boolean finished = false;
 		if(bigger){
 			if(light.getLightValue() > value){
-				finished = true;
+				return true;
 			}
 		}else{
 			if(light.getLightValue() < value){
-				finished = true;
+				return true;
 			}
 		}
-		return finished;
+		return false;
 	}
 }
