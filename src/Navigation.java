@@ -46,19 +46,19 @@ public class Navigation{
 			this.power = power;
 			switch(getLeftMotorPort()){
 				case 'A':
-					Motor.A.setSpeed(this.getPower()*3.6);
+					Motor.A.setSpeed((float)(this.getPower()*3.6));
 				case 'B':
-					Motor.B.setSpeed(this.getPower()*3.6);
+					Motor.B.setSpeed((float)(this.getPower()*3.6));
 				case 'C':
-					Motor.C.setSpeed(this.getPower()*3.6);
+					Motor.C.setSpeed((float)(this.getPower()*3.6));
 			}
 			switch(getRightMotorPort()){
 				case 'A':
-					Motor.A.setSpeed(this.getPower()*3.6);
+					Motor.A.setSpeed((float)(this.getPower()*3.6));
 				case 'B':
-					Motor.B.setSpeed(this.getPower()*3.6);
+					Motor.B.setSpeed((float)(this.getPower()*3.6));
 				case 'C':
-					Motor.C.setSpeed(this.getPower()*3.6);
+					Motor.C.setSpeed((float)(this.getPower()*3.6));
 			}
 		}
 	}
