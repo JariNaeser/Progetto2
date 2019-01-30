@@ -4,7 +4,7 @@ public class Navigation{
 
 	private char leftMotor = 'A';
 	private char rightMotor = 'B';
-	private int power = 0;
+	private int speed = 0;
 	private int steering = 0;
 	private char direction = 'F';
 
@@ -37,29 +37,13 @@ public class Navigation{
 		}
 	}
 
-	public int getPower(){
-		return this.power;
+	public int getMySpeed(){
+		return this.speed;
 	}
 
-	public void setPower(int power){
-		if(power >= 0 && power <= 100){
-			this.power = power;
-			switch(getLeftMotorPort()){
-				case 'A':
-					Motor.A.setSpeed((float)(this.getPower()*3.6));
-				case 'B':
-					Motor.B.setSpeed((float)(this.getPower()*3.6));
-				case 'C':
-					Motor.C.setSpeed((float)(this.getPower()*3.6));
-			}
-			switch(getRightMotorPort()){
-				case 'A':
-					Motor.A.setSpeed((float)(this.getPower()*3.6));
-				case 'B':
-					Motor.B.setSpeed((float)(this.getPower()*3.6));
-				case 'C':
-					Motor.C.setSpeed((float)(this.getPower()*3.6));
-			}
+	public void setMySpeed(int speed){
+		if(speed >= 0){
+			this.speed = speed;
 		}
 	}
 
@@ -86,6 +70,22 @@ public class Navigation{
 	}
 
 	public void move(){
+		switch(getLeftMotorPort()){
+			case 'A':
+				Motor.A.setSpeed((float)this.getMySpeed());
+			case 'B':
+				Motor.B.setSpeed((float)this.getMySpeed());
+			case 'C':
+				Motor.C.setSpeed((float)this.getMySpeed());
+		}
+		switch(getRightMotorPort()){
+			case 'A':
+				Motor.A.setSpeed((float)this.getMySpeed());
+			case 'B':
+				Motor.B.setSpeed((float)this.getMySpeed());
+			case 'C':
+				Motor.C.setSpeed((float)this.getMySpeed());
+		}
 		if(getDirection() == 'F'){
 			switch(getLeftMotorPort()){
 				case 'A':
@@ -126,38 +126,38 @@ public class Navigation{
 	public void left(int howMuch){
 		switch(getLeftMotorPort()){
 			case 'A':
-				Motor.A.setPower(this.getPower() - this.getSteering()/2);
+				Motor.A.setSpeed((float)(this.getMySpeed() - this.getSteering()/2));
 			case 'B':
-				Motor.B.setPower(this.getPower() - this.getSteering()/2);
+				Motor.B.setSpeed((float)(this.getMySpeed() - this.getSteering()/2));
 			case 'C':
-				Motor.C.setPower(this.getPower() - this.getSteering()/2);
+				Motor.C.setSpeed((float)(this.getMySpeed() - this.getSteering()/2));
 		}
 		switch(getRightMotorPort()){
 			case 'A':
-				Motor.A.setPower(this.getPower() + this.getSteering()/2);
+				Motor.A.setSpeed((float)(this.getMySpeed() + this.getSteering()/2));
 			case 'B':
-				Motor.B.setPower(this.getPower() + this.getSteering()/2);
+				Motor.B.setSpeed((float)(this.getMySpeed() + this.getSteering()/2));
 			case 'C':
-				Motor.C.setPower(this.getPower() + this.getSteering()/2);
+				Motor.C.setSpeed((float)(this.getMySpeed() + this.getSteering()/2));
 		}
 	}
 
 	public void right(int howMuch){
 		switch(getLeftMotorPort()){
 			case 'A':
-				Motor.A.setPower(this.getPower() + this.getSteering()/2);
+				Motor.A.setSpeed((float)(this.getMySpeed() + this.getSteering()/2));
 			case 'B':
-				Motor.B.setPower(this.getPower() + this.getSteering()/2);
+				Motor.B.setSpeed((float)(this.getMySpeed() + this.getSteering()/2));
 			case 'C':
-				Motor.C.setPower(this.getPower() + this.getSteering()/2);
+				Motor.C.setSpeed((float)(this.getMySpeed() + this.getSteering()/2));
 		}
 		switch(getRightMotorPort()){
 			case 'A':
-				Motor.A.setPower(this.getPower() - this.getSteering()/2);
+				Motor.A.setSpeed((float)(this.getMySpeed() - this.getSteering()/2));
 			case 'B':
-				Motor.B.setPower(this.getPower() - this.getSteering()/2);
+				Motor.B.setSpeed((float)(this.getMySpeed() - this.getSteering()/2));
 			case 'C':
-		 		Motor.C.setPower(this.getPower() - this.getSteering()/2);
+				Motor.C.setSpeed((float)(this.getMySpeed() - this.getSteering()/2));
 		}
 	}
 

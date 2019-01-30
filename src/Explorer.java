@@ -17,7 +17,7 @@ public class Explorer{
 
 	public Explorer(){
 		navigator = new Navigation(MOTOR_LEFT_PORT, MOTOR_RIGHT_PORT);
-		navigator.setPower(80);
+		navigator.setMySpeed(300);
 		wait = new WaitTime();
 	}
 
@@ -32,9 +32,9 @@ public class Explorer{
 				wait.myWait(1500);
 				navigator.stop();
 				navigator.setDirection('F');
-				navigator.right(20);
+				navigator.right(60);
 				wait.myWait(2000);
-				navigator.setPower(80);
+				navigator.setMySpeed(300);
 			}
 			if(waitTouchSensorLeft.isFinished(0)){
 				//gira a sinistra indietro
@@ -44,9 +44,9 @@ public class Explorer{
 				wait.myWait(1500);
 				navigator.stop();
 				navigator.setDirection('F');
-				navigator.left(20);
+				navigator.left(60);
 				wait.myWait(2000);
-				navigator.setPower(80);
+				navigator.setMySpeed(300);
 			}
 			if(waitTouchSensorRight.isFinished(0)){
 				//gira a destra indietro
@@ -56,9 +56,9 @@ public class Explorer{
 				wait.myWait(1500);
 				navigator.stop();
 				navigator.setDirection('F');
-				navigator.right(20);
+				navigator.right(60);
 				wait.myWait(2000);
-				navigator.setPower(80);
+				navigator.setMySpeed(300);
 			}
 			if(waitLightSensor.isFinished(false, 50)){
 				//Si ferma 
