@@ -9,7 +9,7 @@ public class WaitColorSensor{
 		this.cs = cs;
 	}
 	
-	public void wait(int red, int green, int blue){
+	public void myWait(int red, int green, int blue){
 		while(isFinished(red, green, blue)){
 			
 		}
