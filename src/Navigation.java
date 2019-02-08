@@ -5,7 +5,6 @@ public class Navigation{
 	private char leftMotor = 'A';
 	private char rightMotor = 'B';
 	private int speed = 0;
-	private int steering = 0;
 	private char direction = 'F';
 
 	public Navigation(char leftMotor, char rightMotor){
@@ -44,16 +43,6 @@ public class Navigation{
 	public void setMySpeed(int speed){
 		if(speed >= 0){
 			this.speed = speed;
-		}
-	}
-
-	public int getSteering(){
-		return this.steering;
-	}
-
-	public void setSteering(int steering){
-		if(steering >= 0 && steering <= 128){
-			this.steering = steering;
 		}
 	}
 
