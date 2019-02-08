@@ -1,5 +1,5 @@
-# Progetto 2
-**Sistema didattico per Lego EV3/NXT**
+﻿# Progetto 2
+**Sistema didattico per Lego NXT**
 
 Questo progetto ha lo scopo di semplificare l'uso dei robot LEGO NXT attraverso il linguaggio ```lejOS``` (java) con una libreria.
 
