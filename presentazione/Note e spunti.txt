@@ -1,9 +1,0 @@
-Slide 13 (Conclusioni)
-Progetto che sinceramente è stato pieno di problemi e soluzioni all'ultimo momento non mi è piaciuto quello che dovevamo fare ma ci stava lavorare in coppia.
-Ampliare libreria con funzioni complesse e programmi già creati (più esempi di codice)
-Interfaccia grafica migliorata più semplice
-Slide 12 (Guida)
-Suddivisione delle classi in tabelle, guida d'installazione dettagliata, esempi generalizzati (Immagine con tabelle)
-Slide 10 (Explorer)
-Errore terza riga (errore riscontrato non incontrato)
-Inserire immagine codice explorer
